@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <head>
+    <title>AwesomeAnswers</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%#
+      link_to is a view helper method built-in with Rails
+      The first argument is the `anchor text`
+      The second argument is the `href` value
+     %>
+    <%= link_to("Home", root_path, {class: "abc"}) %>
+    <!-- <a href="<%= root_path %>">Home</a> -->
+    |
+    <%= link_to "About", about_us_path %>
+    <!-- <a href="/about">About</a> -->
+    |
+    <%= link_to "Contact Us", new_contact_path %>
+    <hr>
+
+    <%= yield %>
+  </body>
+</html>
