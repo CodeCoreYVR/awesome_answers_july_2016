@@ -1,0 +1,5 @@
+<h1>All Questions</h1>
+<% @questions.each do |ques| %>
+  <%= link_to ques.title, question_path(ques) %>
+  <hr>
+<% end %>

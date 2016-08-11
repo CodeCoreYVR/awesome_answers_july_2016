@@ -28,7 +28,7 @@ class Question < ApplicationRecord
   def self.recent_ten
     order(created_at: :desc).limit(10)
   end
-
+  # scope :search, lambda {|keyword| where(["title ILIKE ? OR body ILIKE ?", "%#{keyword}%", "%#{keyword}%"]) }
   def self.search(keyword)
     where(["title ILIKE ? OR body ILIKE ?", "%#{keyword}%", "%#{keyword}%"])
   end
