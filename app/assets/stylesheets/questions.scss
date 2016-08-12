@@ -1,3 +1,10 @@
 .field_with_errors input, .field_with_errors textarea {
   border-color: red;
 }
+
+.flash-message {
+  width: 100%;
+  text-align: center;
+  background-color: #D5D5D5;
+  border-radius: 10px;
+}

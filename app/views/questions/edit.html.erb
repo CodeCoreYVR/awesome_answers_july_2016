@@ -1,25 +1,3 @@
 <h1>Edit Question</h1>
-<%# form_for is a Rails built-in form helper which generates a form that integegrates
-    nicely with a matching controller (in this case questions_controller).
-    Case 2: if @question is persisted (saved to the database), then
-            form_for will make the form send a `PATCH` request to `question_path(@question)`
-            which should be defined to submit to questions controller / update action.
-            Also, if you have any attributes pre-set on any of the @question
-            fields (such as title or body). it will be pre-populate those fields.
-            One more thing, it will also add a special class if there happens to be
-            errors on a specific field.
- %>
 
-<%= @question.errors.full_messages.join(", ") %>
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-
-<% end %>
+<%= render "form" %>

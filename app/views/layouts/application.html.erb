@@ -25,7 +25,10 @@
     |
     <%= link_to "Questions", questions_path %>
     <hr>
-
+    <div class="flash-message">
+      <%# notice || alert %>
+      <%= flash[:notice] || flash[:alert] %>
+    </div>
     <%= yield %>
   </body>
 </html>
