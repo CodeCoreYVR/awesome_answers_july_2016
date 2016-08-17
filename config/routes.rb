@@ -13,7 +13,20 @@ Rails.application.routes.draw do
   get "/contact" => "contact#new", as: :new_contact
   post "/contact" => "contact#create", as: :contact
 
-  resources :questions
+  resources :questions do
+    # # collection is used when we don't need to specify a particular question but we expect a collection of question. Examples: index / create
+    # post :search, on: :collection
+    #
+    # # member is used when we need to identify a particular question. Examples are: show / edit / update / destroy
+    # post :search, on: :member
+    #
+    # # This is when we want to have nested routes for our resources. Example: answers for questions.
+    # post :search
+
+    resources :answers, only: [:create, :destroy]
+  end
+
+
   # get "/questions/new" => "questions#new",    as: :new_question
   # post "/questions"    => "questions#create", as: :questions
   # get "/questions/:id" => "questions#show",   as: :question

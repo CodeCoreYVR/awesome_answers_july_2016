@@ -6,3 +6,34 @@
 <%= link_to "Delete", question_path(@question),
                       method: :delete,
                       data: {confirm: "Are you sure?"} %>
+<hr>
+
+<h2>Create an Answer</h2>
+
+<%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+<%#
+  form_for [@question, @answer]
+  this will generate a form for @answer. For example if you have a field `body`
+  the `name` attribute will actually be: answer[body]
+
+  the @question part is only used to generate the action url for the form.
+
+  If @answer is not persisted the url will be: question_answers_path(@question)
+  If @answer is persisted the url will:        question_answer_path(@question, @answer)
+ %>
+<%= @answer.errors.full_messages.join(", ")  %>
+<%= form_for [@question, @answer] do |f| %>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<h2>Answers</h2>
+<% @question.answers.each do |ans| %>
+  <%= ans.body %>
+  <%= link_to "delete", question_answer_path(@question, ans),
+                        method: :delete,
+                        data: {confirm: "Are you sure?"} %>
+  <hr>
+<% end %>
