@@ -9,6 +9,8 @@ class Question < ApplicationRecord
   # nullify: will make question_id `null` for associated answers before deleting
   has_many :answers, dependent: :destroy
 
+  belongs_to :user
+
   # validates(:title, {presence: true})
   validates :title, presence: true, uniqueness: {message: "must be unique!"}
   validates :body, presence: true, length: {minimum: 5}

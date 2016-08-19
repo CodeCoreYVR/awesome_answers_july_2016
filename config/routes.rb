@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:new, :create]
+
+  # delete "/sessions" => "sessions#destroy"
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
+
   # this defines a route that when we receive a `GET` request with URL `/home`
   # it will invoke the `welcome_controller` with `index` action
   # get({"/home" => "welcome#index"})

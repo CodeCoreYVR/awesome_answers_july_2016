@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   # cycle
   # before_action :find_question, except: [:create, :new, :index]
   before_action :find_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :destroy, :update, :new]
 
   QUESTIONS_PER_PAGE = 10
 
@@ -21,7 +22,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question        = Question.new question_params
-
+    @question.user   = current_user
     if @question.save
       # render :show
 
