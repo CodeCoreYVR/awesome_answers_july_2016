@@ -18,9 +18,17 @@ class User < ApplicationRecord
 
   # attr_accessor :password, :password_confirmation
 
+  after_initialize :set_defaults
+
   has_many :questions, dependent: :nullify
 
   def full_name
     "#{first_name} #{last_name}".squeeze(" ").strip.titleize
+  end
+
+  private
+
+  def set_defaults
+    self.admin ||= false
   end
 end
