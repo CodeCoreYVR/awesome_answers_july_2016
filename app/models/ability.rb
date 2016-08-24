@@ -21,6 +21,14 @@ class Ability
       user == question.user
     end
 
+    cannot :like, Question do |question|
+      user == question.user
+    end
+
+    can :destroy, Like do |like|
+      user == like.user
+    end
+
     # can :manage, Answer do |answer|
     #   # this enforces that the logged in user must be either the owner of the
     #   # answer or the owner for the question that the answer references.

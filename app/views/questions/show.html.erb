@@ -8,6 +8,19 @@
                         method: :delete,
                         data: {confirm: "Are you sure?"} %>
 <% end %>
+
+
+<% if can? :like, @question %>
+  <% user_like = @question.like_for current_user %>
+  <% if user_like.present? %>
+    <%= link_to "Un-Like", question_like_path(@question, user_like), method: :delete %>
+  <% else %>
+    <%= link_to "Like", question_likes_path(@question), method: :post %>
+  <% end %>
+<% else %>
+  Like
+<% end %>
+(<%= pluralize @question.likes.count, "like" %>)
 <hr>
 
 <h2>Create an Answer</h2>

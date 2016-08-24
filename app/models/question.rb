@@ -11,6 +11,9 @@ class Question < ApplicationRecord
 
   belongs_to :user
 
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
   # validates(:title, {presence: true})
   validates :title, presence: true, uniqueness: {message: "must be unique!"}
   validates :body, presence: true, length: {minimum: 5}
@@ -42,6 +45,10 @@ class Question < ApplicationRecord
   # scope :search, lambda {|keyword| where(["title ILIKE ? OR body ILIKE ?", "%#{keyword}%", "%#{keyword}%"]) }
   def self.search(keyword)
     where(["title ILIKE ? OR body ILIKE ?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  def like_for(user)
+    likes.find_by_user_id user
   end
 
   private

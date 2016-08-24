@@ -22,6 +22,9 @@ class User < ApplicationRecord
 
   has_many :questions, dependent: :nullify
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_questions, through: :likes, source: :question
+
   def full_name
     "#{first_name} #{last_name}".squeeze(" ").strip.titleize
   end

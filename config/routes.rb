@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     # post :search
 
     resources :answers, only: [:create, :destroy]
+
+    resources :likes, only: [:create, :destroy]
   end
 
 
