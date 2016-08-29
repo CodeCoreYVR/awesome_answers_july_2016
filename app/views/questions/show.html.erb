@@ -2,6 +2,12 @@
 <p>
   <%= @question.body %>
 </p>
+<p>
+  <%= @question.tags.map {|t| t.name }.join(", ") %>
+  <!-- <% @question.tags.each do |t| %>
+    <%= t.name %>,
+  <% end %> -->
+</p>
 <% if can?(:manage, @question) %>
   <%= link_to "Edit", edit_question_path(@question) %>
   <%= link_to "Delete", question_path(@question),

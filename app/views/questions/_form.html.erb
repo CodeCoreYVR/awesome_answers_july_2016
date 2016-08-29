@@ -34,6 +34,15 @@
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
+  <div>
+    <%= f.collection_select(:tag_ids, Tag.all, :id, :name,
+                            {},
+                            { multiple: true, class: 'chosen-select' }) %>
+  </div>
   <%= f.submit %>
 
 <% end %>
+
+<script>
+  $(".chosen-select").chosen({});
+</script>
