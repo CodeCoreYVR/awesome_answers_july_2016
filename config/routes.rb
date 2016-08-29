@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   # delete "/sessions" => "sessions#destroy"
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

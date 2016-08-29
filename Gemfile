@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'delayed_job_active_record'
+
+gem "sinatra", "2.0.0.beta2"
+gem "delayed_job_web"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
