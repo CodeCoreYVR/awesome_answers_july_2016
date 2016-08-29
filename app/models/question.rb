@@ -14,6 +14,9 @@ class Question < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
+  has_many :votes, dependent: :destroy
+  has_many :voting_users, through: :votes, source: :user
+
   # validates(:title, {presence: true})
   validates :title, presence: true, uniqueness: {message: "must be unique!"}
   validates :body, presence: true, length: {minimum: 5}
@@ -49,6 +52,14 @@ class Question < ApplicationRecord
 
   def like_for(user)
     likes.find_by_user_id user
+  end
+
+  def vote_for(user)
+    votes.find_by_user_id user
+  end
+
+  def vote_value
+    votes.up.count - votes.down.count
   end
 
   private

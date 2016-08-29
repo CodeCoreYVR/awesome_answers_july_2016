@@ -16,7 +16,7 @@ class LikesController < ApplicationController
 
   def destroy
     question = Question.find params[:question_id]
-    like = Like.find params[:id]
+    like     = Like.find params[:id]
     if can? :destroy, like
       like.destroy
       redirect_to question_path(question), notice: "Like removed!"

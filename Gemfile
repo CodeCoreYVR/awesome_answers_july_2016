@@ -54,6 +54,8 @@ group :development do
   gem "awesome_print"
   gem "interactive_editor"
   gem "hirb"
+
+  gem "rails-erd"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
