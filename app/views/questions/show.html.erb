@@ -29,29 +29,9 @@
 (<%= pluralize @question.likes.count, "like" %>)
 <hr>
 
-<%# user_vote = @question.vote_for current_user %>
-
-<% if user_vote.nil? %>
-  <%= link_to 'Vote Up', question_votes_path(@question, vote: { is_up: true }),
-                         method: :post %>
-  (<%= @question.vote_value %>)
-  <%= link_to 'Vote Down', question_votes_path(@question, vote: { is_up: false }),
-                           method: :post %>
-<% elsif user_vote.is_up? %>
-  <%= link_to 'Remove Vote Up', question_vote_path(@question, user_vote),
-                                method: :delete %>
-  (<%= @question.vote_value %>)
-  <%= link_to 'Switch to Vote Down',
-               question_vote_path(@question, user_vote, vote: { is_up: false }),
-               method: :patch %>
-<% else %>
-  <%= link_to "Switch to Vote Up",
-              question_vote_path(@question, user_vote, vote: { is_up: true }),
-              method: :patch %>
-  (<%= @question.vote_value %>)
-  <%= link_to 'Remove Vote Down', question_vote_path(@question, user_vote),
-                                  method: :delete %>
-<% end %>
+<div id="vote">
+  <%= render "vote" %>
+</div>
 
 <h2>Create an Answer</h2>
 

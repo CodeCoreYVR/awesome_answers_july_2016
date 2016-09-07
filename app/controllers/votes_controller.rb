@@ -1,25 +1,36 @@
 class VotesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_question
 
   def create
     vote          = Vote.new vote_params
     vote.user     = current_user
-    vote.question = question
-    if vote.save
-      redirect_to question_path(question), notice: "Voted!"
-    else
-      redirect_to question_path(question), alert: "Something is wrong!"
+    vote.question = @question
+    respond_to do |format|
+      if vote.save
+        format.html { redirect_to question_path(@question), notice: "Voted!" }
+        format.js   { render :refresh_vote } # this renders /votes/refresh_vote.js.erb
+      else
+        format.html { redirect_to question_path(@question), alert: "Something is wrong!" }
+        format.js   { render :refresh_vote }
+      end
     end
   end
 
   def update
     vote.update vote_params
-    redirect_to question_path(question), notice: "Vote updated"
+    respond_to do |format|
+      format.html { redirect_to question_path(@question), notice: "Vote updated" }
+      format.js   { render :refresh_vote }
+    end
   end
 
   def destroy
     vote.destroy
-    redirect_to question, notice: "Vote removed!"
+    respond_to do |format|
+      format.html { redirect_to @question, notice: "Vote removed!" }
+      format.js   { render :refresh_vote }
+    end
   end
 
   private
@@ -28,7 +39,7 @@ class VotesController < ApplicationController
     params.require(:vote).permit(:is_up)
   end
 
-  def question
+  def find_question
     @question ||= Question.find params[:question_id]
   end
 
