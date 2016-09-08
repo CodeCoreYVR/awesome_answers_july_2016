@@ -48,6 +48,10 @@ class QuestionsController < ApplicationController
     @questions = Question.order(created_at: :desc).
                           page(params[:page]).
                           per(QUESTIONS_PER_PAGE)
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @questions }
+    end
   end
 
   def edit

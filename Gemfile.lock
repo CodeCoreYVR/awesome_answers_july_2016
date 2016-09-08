@@ -122,6 +122,7 @@ GEM
     pkg-config (1.1.7)
     puma (3.6.0)
     rack (2.0.1)
+    rack-cors (0.4.0)
     rack-protection (2.0.0.beta2)
       rack
     rack-test (0.6.3)
@@ -226,6 +227,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
+  rack-cors
   rails (~> 5.0.0)
   rails-erd
   sass-rails (~> 5.0)
