@@ -2,42 +2,43 @@
   <head>
     <title>AwesomeAnswers</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%#
-      link_to is a view helper method built-in with Rails
-      The first argument is the `anchor text`
-      The second argument is the `href` value
-     %>
-    <%= link_to("Home", root_path, {class: "abc"}) %>
-    <!-- <a href="<%= root_path %>">Home</a> -->
-    |
-    <%= link_to "About", about_us_path %>
-    <!-- <a href="/about">About</a> -->
-    |
-    <%= link_to "Contact Us", new_contact_path %>
-    |
-    <%= link_to "New Question", new_question_path %>
-    |
-    <%= link_to "Questions", questions_path %>
-    |
-    <% if user_signed_in? %>
-      Welcome <%= current_user.full_name %>
-      <%= link_to "Sign Out", sessions_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_path %>
+    <div class="container">
+      <%#
+        link_to is a view helper method built-in with Rails
+        The first argument is the `anchor text`
+        The second argument is the `href` value
+       %>
+      <%= link_to("Home", root_path, {class: "abc"}) %>
+      <!-- <a href="<%= root_path %>">Home</a> -->
       |
-      <%= link_to "Sign In", new_session_path %>
-    <% end %>
-    <hr>
-    <div class="flash-message">
-      <%# notice || alert %>
-      <%= flash[:notice] || flash[:alert] %>
+      <%= link_to "About", about_us_path %>
+      <!-- <a href="/about">About</a> -->
+      |
+      <%= link_to "Contact Us", new_contact_path %>
+      |
+      <%= link_to "New Question", new_question_path %>
+      |
+      <%= link_to "Questions", questions_path %>
+      |
+      <% if user_signed_in? %>
+        Welcome <%= current_user.full_name %>
+        <%= link_to "Sign Out", sessions_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_path %>
+        |
+        <%= link_to "Sign In", new_session_path %>
+      <% end %>
+      <hr>
+      <div class="flash-message">
+        <%# notice || alert %>
+        <%= flash[:notice] || flash[:alert] %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>

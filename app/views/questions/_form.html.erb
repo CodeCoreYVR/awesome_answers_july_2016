@@ -24,22 +24,19 @@
    </ul>
  <% end %> -->
 
-<%= @question.errors.full_messages.join(", ") %>
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div>
+<%#= @question.errors.full_messages.join(", ") %>
+<%= simple_form_for @question do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <div class="form-group">
     <%= f.collection_select(:tag_ids, Tag.all, :id, :name,
                             {},
-                            { multiple: true, class: 'chosen-select' }) %>
+                            { multiple: true, class: 'chosen-select form-control' }) %>
   </div>
-  <%= f.submit %>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
 
 <% end %>
 

@@ -24,6 +24,10 @@ gem 'cancancan'
 
 gem 'chosen-rails'
 
+gem 'bootstrap-sass'
+
+gem 'simple_form'
+
 gem 'rack-cors', :require => 'rack/cors'
 
 # Use jquery as the JavaScript library
