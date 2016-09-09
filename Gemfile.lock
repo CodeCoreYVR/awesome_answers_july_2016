@@ -84,6 +84,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -227,6 +229,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_job_web
   faker!
+  friendly_id
   hirb
   interactive_editor
   jbuilder (~> 2.5)

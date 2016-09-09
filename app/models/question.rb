@@ -24,6 +24,9 @@ class Question < ApplicationRecord
   validates :title, presence: true, uniqueness: {message: "must be unique!"}
   validates :body, presence: true, length: {minimum: 5}
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+
   # This validatse that the title/body combination is unique which means that
   # title doesn't have to be unique by itself, body doesn't have to be unique
   # by itself but the combination of the two must be unique.
@@ -43,6 +46,10 @@ class Question < ApplicationRecord
   def titleized_title
     title.titleize
   end
+
+  # def to_param
+  #   "#{id}-#{title}".parameterize
+  # end
 
   # scope :recent_ten, lambda { order(created_at: :desc).limit(10) }
   def self.recent_ten

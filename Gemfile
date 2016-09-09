@@ -28,6 +28,8 @@ gem 'bootstrap-sass'
 
 gem 'simple_form'
 
+gem 'friendly_id'
+
 gem 'rack-cors', :require => 'rack/cors'
 
 # Use jquery as the JavaScript library

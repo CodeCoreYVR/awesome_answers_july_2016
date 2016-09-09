@@ -58,6 +58,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question.slug = nil
     if @question.update question_params
       redirect_to question_path(@question)
     else
@@ -73,7 +74,7 @@ class QuestionsController < ApplicationController
   private
 
   def find_question
-    @question = Question.find params[:id]
+    @question = Question.friendly.find params[:id]
   end
 
   def question_params
