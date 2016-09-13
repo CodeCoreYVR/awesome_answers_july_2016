@@ -76,6 +76,16 @@ class Question < ApplicationRecord
     votes.up.count - votes.down.count
   end
 
+  delegate :first_name, :last_name, to: :user, prefix: true, allow_nil: true
+  # is equivalent to:
+  # def user_first_name
+  #   user.first_name if user
+  # end
+  #
+  # def user_last_name
+  #   user.last_name if user
+  # end
+
   private
 
   def capitalize_title

@@ -19,6 +19,7 @@ class User < ApplicationRecord
   # attr_accessor :password, :password_confirmation
 
   after_initialize :set_defaults
+  before_create :generate_api_key
 
   has_many :questions, dependent: :nullify
 
@@ -36,5 +37,12 @@ class User < ApplicationRecord
 
   def set_defaults
     self.admin ||= false
+  end
+
+  def generate_api_key
+    loop do
+      self.api_key = SecureRandom.hex(32)
+      break unless User.find_by_api_key(self.api_key)
+    end
   end
 end

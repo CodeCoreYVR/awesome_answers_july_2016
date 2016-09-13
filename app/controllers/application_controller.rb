@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     # the technique below is called memoization which fetched the user in this
     # case the first time you call the method and every subsequent time it uses
     # the one stored in the `@current_user` variable
-    @current_user ||= User.find session[:user_id]
+    @current_user ||= User.find session[:user_id] if user_signed_in?
   end
   helper_method :current_user
 
