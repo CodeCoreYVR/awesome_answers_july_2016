@@ -27,6 +27,10 @@ class Question < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
+  # :image refers to the field in the database that stores the file name
+  # ImageUploader refers to the Uploader class we generated with carrierwave
+  mount_uploader :image, ImageUploader
+
   # This validatse that the title/body combination is unique which means that
   # title doesn't have to be unique by itself, body doesn't have to be unique
   # by itself but the combination of the two must be unique.

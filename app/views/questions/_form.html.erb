@@ -28,6 +28,7 @@
 <%= simple_form_for @question do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
+  <%= f.input :image %>
   <div class="form-group">
     <%= f.collection_select(:tag_ids, Tag.all, :id, :name,
                             {},

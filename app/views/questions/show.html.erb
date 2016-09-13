@@ -1,6 +1,7 @@
 <h1><%= @question.title %></h1>
 <p>
   <%= @question.body %>
+  <%= image_tag @question.image.url(:medium) %>
 </p>
 <p>
   <%= @question.tags.map {|t| t.name }.join(", ") %>

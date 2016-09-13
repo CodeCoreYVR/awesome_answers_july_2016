@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909175232) do
+ActiveRecord::Schema.define(version: 20160909183033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160909175232) do
     t.integer  "view_count"
     t.integer  "user_id"
     t.string   "slug"
+    t.string   "image"
     t.index ["body"], name: "index_questions_on_body", using: :btree
     t.index ["title"], name: "index_questions_on_title", using: :btree
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
