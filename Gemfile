@@ -31,6 +31,7 @@ gem 'simple_form'
 gem 'friendly_id'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem "fog"
 gem "mini_magick"
 
 gem 'rack-cors', :require => 'rack/cors'
