@@ -35,6 +35,10 @@
                             { multiple: true, class: 'chosen-select form-control' }) %>
   </div>
 
+  <% if current_user.from_twitter? %>
+    <%= f.input :tweet_it, as: :boolean %>
+  <% end %>
+
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>

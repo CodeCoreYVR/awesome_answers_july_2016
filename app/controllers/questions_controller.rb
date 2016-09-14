@@ -32,6 +32,18 @@ class QuestionsController < ApplicationController
       # redirect_to question_path({id: @question})
 
       # flash[:notice] = "Question created successfully"
+
+      if @question.tweet_it
+        client = Twitter::REST::Client.new do |config|
+          config.consumer_key        = ENV["TWITTER_API_KEY"]
+          config.consumer_secret     = ENV["TWITTER_API_SECRET"]
+          config.access_token        = current_user.twitter_token
+          config.access_token_secret = current_user.twitter_secret
+        end
+
+        client.update "#{@question.title} #{question_url(@question)}"
+      end
+
       redirect_to question_path(@question), notice: "Question created successfully"
       # redirect_to @question
     else
@@ -92,7 +104,10 @@ class QuestionsController < ApplicationController
 
     # we're using the `strong parameters` feature of Rails here to only allow
     # mass-assigning the attributes that we want to allow the user to set
-    params.require(:question).permit([:title, :body, { tag_ids: [] }, :image])
+    params.require(:question).permit([:title, :body,
+                                      { tag_ids: [] },
+                                      :image,
+                                      :tweet_it])
   end
 
   def authorize!

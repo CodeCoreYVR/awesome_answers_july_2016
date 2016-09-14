@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+  # this will help us store / retrieve a field `tweet_it` without persisting to
+  # the database
+  attr_accessor :tweet_it
 
   # this associates the question with answer in a one-to-many fashion
   # this will give us handy methods to easily created associated answers and

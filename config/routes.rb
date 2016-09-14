@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
+  get '/auth/twitter', as: :sign_in_with_twitter
+  get '/auth/twitter/callback' => 'callbacks#twitter'
+
   # delete "/sessions" => "sessions#destroy"
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
