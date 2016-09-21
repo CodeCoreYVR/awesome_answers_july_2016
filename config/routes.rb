@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/react_home' => "react_home#index"
+
   resources :users, only: [:new, :create]
 
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]

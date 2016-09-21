@@ -56,6 +56,10 @@ GEM
     autoprefixer-rails (6.4.1)
       execjs
     awesome_print (1.7.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -81,6 +85,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     cowsay (0.2.0)
     debug_inspector (0.0.2)
     delayed_job (4.1.2)
@@ -346,6 +351,13 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
+    react-rails (1.8.2)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     ruby-graphviz (1.2.2)
     sass (3.4.22)
     sass-rails (5.0.6)
@@ -444,6 +456,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.0)
   rails-erd
+  react-rails
   sass-rails (~> 5.0)
   simple_form
   sinatra (= 2.0.0.beta2)
