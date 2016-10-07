@@ -59,7 +59,9 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order(created_at: :desc).
                           page(params[:page]).
-                          per(QUESTIONS_PER_PAGE)
+                          per(QUESTIONS_PER_PAGE).
+                          eager_load(:answers).
+                          references(:answers)
     respond_to do |format|
       format.html { render }
       format.json { render json: @questions }
